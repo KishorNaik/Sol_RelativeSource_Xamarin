@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Relative Source Demo"
+             x:Class="Sol_Demo.MainPage">
+
+    <ContentPage.Resources>
+        <Style>
+            <Setter>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="btnControlTemplate">
+        </ControlTemplate>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <StackLayout>
+            <Label Text="Relative Source Self"></Label>
+            <BoxView
+                Color="Red"
+                WidthRequest="200"
+                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=WidthRequest}">
+            </BoxView>
+        </StackLayout>
+        <StackLayout BackgroundColor="Orange">
+            <Label Text="Relative Source FindAncestor"></Label>
+            <BoxView
+                Color="{Binding Path=BackgroundColor, Source={x:RelativeSource Mode=FindAncestor, AncestorType={x:Type StackLayout}, AncestorLevel=1}}"
+                WidthRequest="200"
+                HeightRequest="200">
+            </BoxView>
+            <Label Text="{Binding Path=Title, Source={x:RelativeSource Mode=FindAncestor, AncestorType={x:Type ContentPage}}}"></Label>
+        </StackLayout>
+        <StackLayout>
+            <Button></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
